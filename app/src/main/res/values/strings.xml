@@ -3,7 +3,23 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    
+
+    <!-- Placeholder texts -->
     <string name="xTouch">X Coordinate</string>
     <string name="yTouch">Y Coordinate</string>
+    <string name="Rotation">Rotation</string>
+    <string name="Direction">Direction</string>
+    <string name="Orientation">Orientation</string>
+
+    <!-- Directions -->
+    <string name="dirForwards">Forwards</string>
+    <string name="dirBackwards">Backwards</string>
+    <string name="dirLeft">Left</string>
+    <string name="dirRight">Right</string>
+    <string name="dirNone">None</string>
+
+    <!-- Orientations -->
+    <string name="orientPortrait">Portrait</string>
+    <string name="orientLandscape">Landscape</string>
+
 </resources>

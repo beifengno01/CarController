@@ -5,7 +5,42 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/yPos"
+        android:text="@string/yTouch"
+        android:layout_alignParentStart="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/xTouch"
+        android:id="@+id/xPos"
+        android:layout_below="@+id/yPos"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Rotation"
+        android:id="@+id/rot"
+        android:layout_below="@+id/xPos"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Direction"
+        android:id="@+id/dir"
+        android:layout_below="@+id/rot"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Orientation"
+        android:id="@+id/orient"
+        android:layout_below="@+id/dir"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
