@@ -44,4 +44,12 @@
         android:layout_below="@+id/dir"
         android:layout_alignParentStart="true" />
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Connected"
+        android:id="@+id/connected"
+        android:layout_below="@+id/orient"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

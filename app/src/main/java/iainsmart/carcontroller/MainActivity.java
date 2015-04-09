@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.view.MotionEvent;
 import android.hardware.SensorEvent;
@@ -14,17 +16,16 @@ import android.hardware.SensorEventListener;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 
+import java.util.Set;
+
 // TODO: Joysticks
 // TODO: Accellerometers
 // TODO: Bluetooth things
 // TODO: Make an app that actually works?
 
 public class MainActivity extends ActionBarActivity {
-	private static TextView yPos;
-	private static TextView xPos;
-	private static TextView txtRot;
-	private static TextView dir;
-	private static TextView orient;
+	private static TextView yPos, xPos, txtRot, dir, orient;
+	private static ListView pairedDevs;
 
 	private SensorManager mSensorManager;
 	private Sensor mRotationSensor;
@@ -38,6 +39,7 @@ public class MainActivity extends ActionBarActivity {
 		txtRot = (TextView) findViewById(R.id.rot);
 		dir = (TextView) findViewById(R.id.dir);
 		orient = (TextView) findViewById(R.id.orient);
+		pairedDevs = (ListView) findViewById(R.id.connected);
 
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		mRotationSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
@@ -48,6 +50,22 @@ public class MainActivity extends ActionBarActivity {
 			if (!mBluetoothAdapter.isEnabled()) { // If Bluetooth is off
 				Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE); //Request it be enabled
 				startActivityForResult(enableBtIntent, 1);
+			}
+			else {
+				Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+
+				ArrayAdapter<String> devicesAdapter =
+						new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+
+				// If there are paired devices
+				if (pairedDevices.size() > 0) {
+					// Loop through paired devices
+					for (BluetoothDevice device : pairedDevices) {
+						// Add the name and address to an array adapter to show in a ListView
+						devicesAdapter.add(device.getName() + "\n" + device.getAddress());
+					}
+				}
+				pairedDevs.setAdapter(devicesAdapter);
 			}
 		}
 		// TODO: Something if there ain't no Bluetooth?

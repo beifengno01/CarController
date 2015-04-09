@@ -10,6 +10,7 @@
     <string name="Rotation">Rotation</string>
     <string name="Direction">Direction</string>
     <string name="Orientation">Orientation</string>
+    <string name="Connected">Connected Devices:</string>
 
     <!-- Directions -->
     <string name="dirForwards">Forwards</string>
