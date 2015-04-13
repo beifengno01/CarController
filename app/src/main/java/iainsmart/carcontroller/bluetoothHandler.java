@@ -115,7 +115,7 @@ public class bluetoothHandler {
 	 * @param secure Socket Security type - Secure (true) , Insecure (false)
 	 */
 	public synchronized void connect(BluetoothDevice device, boolean secure) {
-
+		Log.v(TAG, "Connect Function Running...");
 		// Cancel any thread attempting to make a connection
 		if (mState == STATE_CONNECTING) {
 			if (mConnectThread != null) {

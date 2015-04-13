@@ -171,14 +171,25 @@ public class MainActivity extends ActionBarActivity {
 	private AdapterView.OnItemClickListener mDeviceClickListener
 			= new AdapterView.OnItemClickListener() {
 		public void onItemClick(AdapterView<?> av, View v, int position, long id) {
-			Log.d(TAG, "Item Clicked: " + id);
+			Log.v(TAG, "Item Clicked: " + id);
 
 			String itemText = av.getItemAtPosition(position).toString();
 			itemText = itemText.substring(itemText.length() - 17);
-			Log.d(TAG, itemText);
+			Log.v(TAG, itemText);
 			// Cancel discovery because it's costly and we're about to connect
 			mBluetoothAdapter.cancelDiscovery();
-			Log.d(TAG, "Discovery Cancelled");
+			Log.v(TAG, "Discovery Cancelled");
+
+			try {
+				Log.v(TAG, "Attempting to connect to device: " + itemText);
+				mBluetoothHandler.connect(mBluetoothAdapter.getRemoteDevice(itemText), false);
+			} /*catch (NullPointerException e1) {
+				Log.e(TAG, "Null pointer exception! ");
+				Log.e(TAG, "", e1);
+			} */catch (Exception e2) {
+				Log.e(TAG, "Error connecting to device");
+				Log.e(TAG, "", e2);
+			}
 		}
 	};
 }
